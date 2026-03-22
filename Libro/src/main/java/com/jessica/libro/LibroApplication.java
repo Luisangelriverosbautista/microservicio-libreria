@@ -1,13 +1,13 @@
-package com.jessica.biblioteca_libro;
+package com.jessica.libro;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BibliotecaLibroApplication {
+public class LibroApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BibliotecaLibroApplication.class, args);
+        SpringApplication.run(LibroApplication.class, args);
     }
 
 }

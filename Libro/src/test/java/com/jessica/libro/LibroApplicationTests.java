@@ -1,10 +1,10 @@
-package com.jessica.biblioteca_libro;
+package com.jessica.libro;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BibliotecaLibroApplicationTests {
+class LibroApplicationTests {
 
     @Test
     void contextLoads() {
