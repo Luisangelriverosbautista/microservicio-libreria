@@ -28,9 +28,9 @@ public class Libro {
     @NotBlank(message = "El año es obligatoria")
     private  String año;
 
-    private Long categoriaId;//relacion con la clase categoria
+   private Long categoriaId;//relacion con la clase categoria
 
     @NotBlank(message = "Es obligatoria")
-    private  String disponobilidad;
+    private  String disponibilidad;
 
 }
