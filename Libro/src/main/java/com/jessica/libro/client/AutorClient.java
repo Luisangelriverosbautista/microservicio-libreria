@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
-@FeignClient(name = "Autor", url = "http://localhost:9091/autores")
+@FeignClient(name = "autor-service", url = "http://localhost:9091")
 public interface AutorClient {
-    @GetMapping("/traer-autor/{id}")
-    Autor getAutorById(@PathVariable Long id);
+    @GetMapping("/autores/traer-autor/{id}")
+    Autor getAutorById(@PathVariable("id") Long id);
 }

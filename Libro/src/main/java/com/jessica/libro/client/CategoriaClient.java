@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 
-@FeignClient(name = "Categoria", url = "http://localhost:9092/categorias")
+@FeignClient(name = "categoria-service", url = "http://localhost:9092")
 public interface CategoriaClient {
-    @GetMapping("/traer-categoria/{id}")
-    Categoria getCategoriaById(@PathVariable Long id);
+    @GetMapping("/categorias/traer-categoria/{id}")
+    Categoria getCategoriaById(@PathVariable("id") Long id);
 }

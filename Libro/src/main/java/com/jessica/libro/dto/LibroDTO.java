@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @JsonPropertyOrder({ "id", "titulo", "autor", "editorial", "año", "categoria", "disponibilidad" })
 @Getter
 @Setter
@@ -13,23 +15,19 @@ import lombok.Setter;
 public class LibroDTO {
     private Long id;
     private String titulo;
-    private Autor autor;
     private String editorial;
-    private String año;
+    private String añoPublicacion;
+    private Boolean disponibilidad;   // ahora es Boolean
     private Categoria categoria;
-    private String disponibilidad;
+    private List<Autor> autores;
 
-
-
-    public LibroDTO(Libro libro, Autor autor, Categoria categoria) {
+    public LibroDTO(Libro libro, Categoria categoria, List<Autor> autores) {
         this.id = libro.getId();
         this.titulo = libro.getTitulo();
-        this.autor = autor;
         this.editorial = libro.getEditorial();
-        this.año = libro.getAño();
+        this.añoPublicacion = libro.getAñoPublicacion();
+        this.disponibilidad = libro.getDisponibilidad(); // correcto ahora
         this.categoria = categoria;
-        this.disponibilidad = libro.getDisponibilidad();
-
-
-}
+        this.autores = autores;
+    }
 }
