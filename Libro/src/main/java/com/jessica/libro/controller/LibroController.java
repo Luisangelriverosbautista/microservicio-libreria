@@ -1,6 +1,6 @@
 package com.jessica.libro.controller;
 
-import com.jessica.libro.dto.LibroDTO;
+
 import com.jessica.libro.model.Libro;
 import com.jessica.libro.services.LibroServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +19,12 @@ public class LibroController {
     private LibroServices libroServices;
 
     @GetMapping("/traer-libros")
-    public List<LibroDTO> traerLibros() {
+    public List<Libro> traerLibros() {
         return libroServices.obtenerTodos();
     }
 
     @GetMapping("/traer-libro/{id}")
-    public ResponseEntity<LibroDTO> traerUnLibro(@PathVariable Long id) {
+    public ResponseEntity<Libro> traerUnLibro(@PathVariable Long id) {
         return libroServices.obtenerPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
