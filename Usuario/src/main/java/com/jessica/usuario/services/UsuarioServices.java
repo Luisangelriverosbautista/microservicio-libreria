@@ -24,7 +24,6 @@ public class UsuarioServices {
     public Usuario crearUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
-
     public Optional <Usuario> actualizarUsuario(Long id, Usuario usuarioActualizado) {
         return usuarioRepository.findById(id).map(usuario -> {
         usuario.setNombre(usuarioActualizado.getNombre());
@@ -34,9 +33,7 @@ public class UsuarioServices {
         usuario.setDireccion(usuarioActualizado.getDireccion());
         return usuarioRepository.save(usuario);});
     }
-
     public void eliminarUsuario(Long id) {
-
         usuarioRepository.deleteById(id);
     }
 }

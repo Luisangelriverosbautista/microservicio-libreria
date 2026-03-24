@@ -17,7 +17,7 @@ import lombok.Setter;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idUsuario;
 
     @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
@@ -30,10 +30,8 @@ public class Usuario {
     @Column(unique = true)
     private String correo;
 
-
     @Pattern(regexp = "^[0-9]{10}$", message = "El telefono debe ser valido")
     private String telefono;
-
 
     private  String direccion;
 }

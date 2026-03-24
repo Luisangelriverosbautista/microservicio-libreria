@@ -36,8 +36,6 @@ public class UsuarioController {
     public  ResponseEntity<Usuario> ediutarUsuario(@PathVariable Long id,  @RequestBody Usuario usuario){
         Optional<Usuario> usuarioActualizado=usuarioServices.actualizarUsuario(id,usuario);
         return usuarioActualizado.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
-
-
     }
 
     @DeleteMapping("/eliminar-usuario/{id}")

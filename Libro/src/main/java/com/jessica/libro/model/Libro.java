@@ -21,7 +21,6 @@ public class Libro {
 
     @NotBlank(message = "El titulo es obligatorio")
     private String titulo;
-
   //Relacion de muchos a muchos con autor, un autor puede tener varios libros y un libro puede tener varios autores
     @ManyToMany
     @JoinTable(
@@ -30,7 +29,6 @@ public class Libro {
             inverseJoinColumns = @JoinColumn(name = "id_autor")
     )
     private List<Autor> autores;
-
 
     @NotBlank(message = "La editorial es obligatoria")
     private  String editorial;
