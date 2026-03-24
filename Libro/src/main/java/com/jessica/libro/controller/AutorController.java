@@ -12,7 +12,7 @@ import java.util.Optional;
 @CrossOrigin(origins = "*")
 public class AutorController {
     @Autowired
-    private AutorService autorService;
+    private AutorServices autorService;
 
     @GetMapping("/traer-autores")
     public List<Autor> traerAutores() {

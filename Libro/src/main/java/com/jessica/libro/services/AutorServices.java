@@ -1,13 +1,13 @@
 package com.jessica.libro.services;
+
 import com.jessica.libro.model.Autor;
 import com.jessica.libro.repository.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class AutorService {
+public class AutorServices {
     @Autowired
     private AutorRepository autorRepository;
 
