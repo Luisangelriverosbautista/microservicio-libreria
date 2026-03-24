@@ -1,4 +1,7 @@
 package com.jessica.libro.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,8 +16,13 @@ import java.util.List;
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idCategoria;
     private String nombre;
-    @ManyToMany(mappedBy = "autores")
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "categoria")
     private List<Libro> libros;
+
+
+
 }

@@ -1,6 +1,6 @@
 package com.jessica.libro.controller;
 import com.jessica.libro.model.Categoria;
-import com.jessica.libro.services.CategoriaService;
+import com.jessica.libro.services.CategoriaServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import java.util.Optional;
 @CrossOrigin(origins = "*")
 public class CategoriaController {
     @Autowired
-    private CategoriaService categoriaService;
+    private CategoriaServices categoriaService;
 
     @GetMapping("/traer-categorias")
     public List<Categoria> traerCategorias() {

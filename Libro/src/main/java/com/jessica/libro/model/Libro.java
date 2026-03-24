@@ -22,13 +22,14 @@ public class Libro {
     @NotBlank(message = "El titulo es obligatorio")
     private String titulo;
   //Relacion de muchos a muchos con autor, un autor puede tener varios libros y un libro puede tener varios autores
-    @ManyToMany
-    @JoinTable(
-            name = "libro_autor",
-            joinColumns = @JoinColumn(name="id_libro"),
-            inverseJoinColumns = @JoinColumn(name = "id_autor")
-    )
-    private List<Autor> autores;
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(
+          name = "libro_autor",
+          joinColumns = @JoinColumn(name = "id_libro"),
+          inverseJoinColumns = @JoinColumn(name = "id_autor")
+  )
+  private List<Autor> autores;
+
 
     @NotBlank(message = "La editorial es obligatoria")
     private  String editorial;
@@ -37,9 +38,9 @@ public class Libro {
     private  Integer añoPublicacion;
 
    //relacion de libro con categoria, un libro solo tiene una categoria y una categoria puede tener muchos libros
-    @ManyToOne
-    @JoinColumn(name ="id_categoria")
-    private Categoria categoria;
+   @ManyToOne(fetch = FetchType.EAGER)
+   @JoinColumn(name = "id_categoria")
+   private Categoria categoria;
 
     @NotNull
     private  Boolean disponibilidad;

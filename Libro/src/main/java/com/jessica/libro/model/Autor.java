@@ -1,4 +1,5 @@
 package com.jessica.libro.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +17,8 @@ public class Autor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAutor;
     private String nombre;
+
+    @JsonIgnore
     @ManyToMany(mappedBy = "autores")
     private List<Libro> libros;
 }
