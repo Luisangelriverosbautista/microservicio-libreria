@@ -1,0 +1,527 @@
+{
+  "info": {
+    "name": "Microservicio Librería",
+    "_postman_id": "microservicio-libreria-collection",
+    "description": "Colección completa de endpoints para los microservicios Usuario (9091), Libro (9090) y Prestamo (9092). Flujo recomendado: 1) Crear Categoría → 2) Crear Autor → 3) Crear Libro → 4) Crear Usuario → 5) Crear Préstamo → 6) Devolver Préstamo.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "urlUsuario",  "value": "http://localhost:9091" },
+    { "key": "urlLibro",   "value": "http://localhost:9090" },
+    { "key": "urlPrestamo","value": "http://localhost:9092" },
+    { "key": "idUsuario",  "value": "1" },
+    { "key": "idLibro",    "value": "1" },
+    { "key": "idAutor",    "value": "1" },
+    { "key": "idCategoria","value": "1" },
+    { "key": "idPrestamo", "value": "1" }
+  ],
+  "item": [
+
+    {
+      "name": "1. USUARIO",
+      "item": [
+        {
+          "name": "Listar todos los usuarios",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlUsuario}}/usuarios/traer-usuarios",
+              "host": ["{{urlUsuario}}"],
+              "path": ["usuarios","traer-usuarios"]
+            }
+          }
+        },
+        {
+          "name": "Obtener usuario por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlUsuario}}/usuarios/traer-usuario/{{idUsuario}}",
+              "host": ["{{urlUsuario}}"],
+              "path": ["usuarios","traer-usuario","{{idUsuario}}"]
+            }
+          }
+        },
+        {
+          "name": "Crear usuario",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"María\",\n  \"apellidos\": \"González López\",\n  \"correo\": \"maria.gonzalez@correo.com\",\n  \"telefono\": \"3001234567\",\n  \"direccion\": \"Calle 123 #45-67\"\n}"
+            },
+            "url": {
+              "raw": "{{urlUsuario}}/usuarios/insertar-usuario",
+              "host": ["{{urlUsuario}}"],
+              "path": ["usuarios","insertar-usuario"]
+            }
+          }
+        },
+        {
+          "name": "Editar usuario",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"María Editada\",\n  \"apellidos\": \"González López\",\n  \"correo\": \"maria.editada@correo.com\",\n  \"telefono\": \"3009876543\",\n  \"direccion\": \"Calle Nueva #10-20\"\n}"
+            },
+            "url": {
+              "raw": "{{urlUsuario}}/usuarios/editar-usuario/{{idUsuario}}",
+              "host": ["{{urlUsuario}}"],
+              "path": ["usuarios","editar-usuario","{{idUsuario}}"]
+            }
+          }
+        },
+        {
+          "name": "Eliminar usuario",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{urlUsuario}}/usuarios/eliminar-usuario/{{idUsuario}}",
+              "host": ["{{urlUsuario}}"],
+              "path": ["usuarios","eliminar-usuario","{{idUsuario}}"]
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "2. CATEGORÍA",
+      "item": [
+        {
+          "name": "Listar todas las categorías",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlLibro}}/categorias/traer-categorias",
+              "host": ["{{urlLibro}}"],
+              "path": ["categorias","traer-categorias"]
+            }
+          }
+        },
+        {
+          "name": "Obtener categoría por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlLibro}}/categorias/traer-categoria/{{idCategoria}}",
+              "host": ["{{urlLibro}}"],
+              "path": ["categorias","traer-categoria","{{idCategoria}}"]
+            }
+          }
+        },
+        {
+          "name": "Crear categoría",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Ciencia Ficción\"\n}"
+            },
+            "url": {
+              "raw": "{{urlLibro}}/categorias/insertar-categorias",
+              "host": ["{{urlLibro}}"],
+              "path": ["categorias","insertar-categorias"]
+            }
+          }
+        },
+        {
+          "name": "Editar categoría",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Ciencia Ficción y Fantasía\"\n}"
+            },
+            "url": {
+              "raw": "{{urlLibro}}/categorias/editar-categorias/{{idCategoria}}",
+              "host": ["{{urlLibro}}"],
+              "path": ["categorias","editar-categorias","{{idCategoria}}"]
+            }
+          }
+        },
+        {
+          "name": "Eliminar categoría",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{urlLibro}}/categorias/eliminar-categorias/{{idCategoria}}",
+              "host": ["{{urlLibro}}"],
+              "path": ["categorias","eliminar-categorias","{{idCategoria}}"]
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "3. AUTOR",
+      "item": [
+        {
+          "name": "Listar todos los autores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlLibro}}/autores/traer-autores",
+              "host": ["{{urlLibro}}"],
+              "path": ["autores","traer-autores"]
+            }
+          }
+        },
+        {
+          "name": "Obtener autor por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlLibro}}/autores/traer-autor/{{idAutor}}",
+              "host": ["{{urlLibro}}"],
+              "path": ["autores","traer-autor","{{idAutor}}"]
+            }
+          }
+        },
+        {
+          "name": "Crear autor",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Gabriel García Márquez\"\n}"
+            },
+            "url": {
+              "raw": "{{urlLibro}}/autores/insertar-autores",
+              "host": ["{{urlLibro}}"],
+              "path": ["autores","insertar-autores"]
+            }
+          }
+        },
+        {
+          "name": "Editar autor",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"G. García Márquez\"\n}"
+            },
+            "url": {
+              "raw": "{{urlLibro}}/autores/editar-autores/{{idAutor}}",
+              "host": ["{{urlLibro}}"],
+              "path": ["autores","editar-autores","{{idAutor}}"]
+            }
+          }
+        },
+        {
+          "name": "Eliminar autor",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{urlLibro}}/autores/eliminar-autores/{{idAutor}}",
+              "host": ["{{urlLibro}}"],
+              "path": ["autores","eliminar-autores","{{idAutor}}"]
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "4. LIBRO",
+      "item": [
+        {
+          "name": "Listar todos los libros",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlLibro}}/libros/traer-libros",
+              "host": ["{{urlLibro}}"],
+              "path": ["libros","traer-libros"]
+            }
+          }
+        },
+        {
+          "name": "Obtener libro por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlLibro}}/libros/traer-libro/{{idLibro}}",
+              "host": ["{{urlLibro}}"],
+              "path": ["libros","traer-libro","{{idLibro}}"]
+            }
+          }
+        },
+        {
+          "name": "Crear libro (sin categoría ni autores)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Cien Años de Soledad\",\n  \"editorial\": \"Editorial Sudamericana\",\n  \"anoPublicacion\": 1967,\n  \"disponibilidad\": true\n}"
+            },
+            "url": {
+              "raw": "{{urlLibro}}/libros/insertar-libro",
+              "host": ["{{urlLibro}}"],
+              "path": ["libros","insertar-libro"]
+            }
+          }
+        },
+        {
+          "name": "Crear libro (con categoría y autores existentes)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"El Amor en los Tiempos del Cólera\",\n  \"editorial\": \"Oveja Negra\",\n  \"anoPublicacion\": 1985,\n  \"disponibilidad\": true,\n  \"categoria\": { \"idCategoria\": 1 },\n  \"autores\": [\n    { \"idAutor\": 1 }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{urlLibro}}/libros/insertar-libro",
+              "host": ["{{urlLibro}}"],
+              "path": ["libros","insertar-libro"]
+            }
+          }
+        },
+        {
+          "name": "Editar libro",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Cien Años de Soledad (Ed. Especial)\",\n  \"editorial\": \"Editorial Sudamericana\",\n  \"anoPublicacion\": 1967,\n  \"disponibilidad\": true\n}"
+            },
+            "url": {
+              "raw": "{{urlLibro}}/libros/editar-libro/{{idLibro}}",
+              "host": ["{{urlLibro}}"],
+              "path": ["libros","editar-libro","{{idLibro}}"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar disponibilidad del libro",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{urlLibro}}/libros/actualizar-disponibilidad/{{idLibro}}?disponible=false",
+              "host": ["{{urlLibro}}"],
+              "path": ["libros","actualizar-disponibilidad","{{idLibro}}"],
+              "query": [{ "key": "disponible", "value": "false" }]
+            }
+          }
+        },
+        {
+          "name": "Eliminar libro",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{urlLibro}}/libros/eliminar-libro/{{idLibro}}",
+              "host": ["{{urlLibro}}"],
+              "path": ["libros","eliminar-libro","{{idLibro}}"]
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "5. PRÉSTAMO",
+      "item": [
+        {
+          "name": "Listar todos los préstamos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlPrestamo}}/prestamos/traer-prestamos",
+              "host": ["{{urlPrestamo}}"],
+              "path": ["prestamos","traer-prestamos"]
+            }
+          }
+        },
+        {
+          "name": "Obtener préstamo por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlPrestamo}}/prestamos/traer-prestamo/{{idPrestamo}}",
+              "host": ["{{urlPrestamo}}"],
+              "path": ["prestamos","traer-prestamo","{{idPrestamo}}"]
+            }
+          }
+        },
+        {
+          "name": "Crear préstamo",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idUsuario\": {{idUsuario}},\n  \"idLibro\": {{idLibro}}\n}"
+            },
+            "url": {
+              "raw": "{{urlPrestamo}}/prestamos/insertar-prestamo",
+              "host": ["{{urlPrestamo}}"],
+              "path": ["prestamos","insertar-prestamo"]
+            }
+          }
+        },
+        {
+          "name": "Devolver préstamo",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{urlPrestamo}}/prestamos/devolver-prestamo/{{idPrestamo}}",
+              "host": ["{{urlPrestamo}}"],
+              "path": ["prestamos","devolver-prestamo","{{idPrestamo}}"]
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "🔁 FLUJO COMPLETO (orden recomendado)",
+      "description": "Ejecuta estas requests en orden para probar la integración completa entre los tres microservicios.",
+      "item": [
+        {
+          "name": "PASO 1 — Crear categoría",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Literatura\"\n}"
+            },
+            "url": {
+              "raw": "{{urlLibro}}/categorias/insertar-categorias",
+              "host": ["{{urlLibro}}"],
+              "path": ["categorias","insertar-categorias"]
+            }
+          }
+        },
+        {
+          "name": "PASO 2 — Crear autor",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Gabriel García Márquez\"\n}"
+            },
+            "url": {
+              "raw": "{{urlLibro}}/autores/insertar-autores",
+              "host": ["{{urlLibro}}"],
+              "path": ["autores","insertar-autores"]
+            }
+          }
+        },
+        {
+          "name": "PASO 3 — Crear libro disponible",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Cien Años de Soledad\",\n  \"editorial\": \"Editorial Sudamericana\",\n  \"anoPublicacion\": 1967,\n  \"disponibilidad\": true,\n  \"categoria\": { \"idCategoria\": {{idCategoria}} },\n  \"autores\": [ { \"idAutor\": {{idAutor}} } ]\n}"
+            },
+            "url": {
+              "raw": "{{urlLibro}}/libros/insertar-libro",
+              "host": ["{{urlLibro}}"],
+              "path": ["libros","insertar-libro"]
+            }
+          }
+        },
+        {
+          "name": "PASO 4 — Crear usuario",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Ana\",\n  \"apellidos\": \"Martínez Ruiz\",\n  \"correo\": \"ana.martinez@correo.com\",\n  \"telefono\": \"3121234567\",\n  \"direccion\": \"Av. Principal 99\"\n}"
+            },
+            "url": {
+              "raw": "{{urlUsuario}}/usuarios/insertar-usuario",
+              "host": ["{{urlUsuario}}"],
+              "path": ["usuarios","insertar-usuario"]
+            }
+          }
+        },
+        {
+          "name": "PASO 5 — Crear préstamo (cambia los IDs si es necesario)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idUsuario\": {{idUsuario}},\n  \"idLibro\": {{idLibro}}\n}"
+            },
+            "url": {
+              "raw": "{{urlPrestamo}}/prestamos/insertar-prestamo",
+              "host": ["{{urlPrestamo}}"],
+              "path": ["prestamos","insertar-prestamo"]
+            }
+          }
+        },
+        {
+          "name": "PASO 6 — Verificar que el libro ya no está disponible",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlLibro}}/libros/traer-libro/{{idLibro}}",
+              "host": ["{{urlLibro}}"],
+              "path": ["libros","traer-libro","{{idLibro}}"]
+            }
+          }
+        },
+        {
+          "name": "PASO 7 — Devolver préstamo",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{urlPrestamo}}/prestamos/devolver-prestamo/{{idPrestamo}}",
+              "host": ["{{urlPrestamo}}"],
+              "path": ["prestamos","devolver-prestamo","{{idPrestamo}}"]
+            }
+          }
+        },
+        {
+          "name": "PASO 8 — Verificar que el libro volvió a estar disponible",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlLibro}}/libros/traer-libro/{{idLibro}}",
+              "host": ["{{urlLibro}}"],
+              "path": ["libros","traer-libro","{{idLibro}}"]
+            }
+          }
+        }
+      ]
+    }
+
+  ]
+}

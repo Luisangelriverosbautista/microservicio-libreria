@@ -53,7 +53,7 @@ public class LibroController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PatchMapping("/actualizar-disponibilidad/{id}")
+    @RequestMapping(value = "/actualizar-disponibilidad/{id}", method = {RequestMethod.PUT, RequestMethod.PATCH})
     public ResponseEntity<LibroDTO> actualizarDisponibilidad(@PathVariable Long id, @RequestParam Boolean disponible) {
         return libroServices.actualizarDisponibilidad(id, disponible)
                 .map(LibroDTO::new)
