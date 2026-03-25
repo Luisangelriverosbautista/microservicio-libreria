@@ -39,6 +39,13 @@ public class LibroServices {
         });
     }
 
+    public Optional<Libro> actualizarDisponibilidad(Long id, Boolean disponibilidad) {
+        return libroRepository.findById(id).map(libroExistente -> {
+            libroExistente.setDisponibilidad(disponibilidad);
+            return libroRepository.save(libroExistente);
+        });
+    }
+
     public void eliminarLibro(Long id) {
         libroRepository.deleteById(id);
     }

@@ -53,6 +53,14 @@ public class LibroController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PatchMapping("/actualizar-disponibilidad/{id}")
+    public ResponseEntity<LibroDTO> actualizarDisponibilidad(@PathVariable Long id, @RequestParam Boolean disponible) {
+        return libroServices.actualizarDisponibilidad(id, disponible)
+                .map(LibroDTO::new)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     // Eliminar un libro
     @DeleteMapping("/eliminar-libro/{id}")
     public ResponseEntity<Void> eliminarlibro(@PathVariable Long id) {

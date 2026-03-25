@@ -1,0 +1,12 @@
+com\jessica\prestamo\repository\PrestamoRepository.class
+com\jessica\prestamo\controller\PrestamoController.class
+com\jessica\prestamo\client\dto\LibroDTO.class
+com\jessica\prestamo\client\LibroClient.class
+com\jessica\prestamo\client\UsuarioClient.class
+com\jessica\prestamo\model\EstadoPrestamo.class
+com\jessica\prestamo\model\Prestamo.class
+com\jessica\prestamo\DTO\PrestamoResponseDTO.class
+com\jessica\prestamo\services\PrestamoServices.class
+com\jessica\prestamo\client\dto\UsuarioDTO.class
+com\jessica\prestamo\PrestamoApplication.class
+com\jessica\prestamo\DTO\PrestamoRequestDTO.class
